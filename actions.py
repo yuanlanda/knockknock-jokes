@@ -16,7 +16,10 @@ from rasa_sdk.events import SlotSet
 import random
 
 JOKES = [("Doctor", "🤪😂"),
-         ("Deja", "Knock-knock")]
+         ("Deja", "Knock-knock"),
+         ("Robin", "Robin you, now hand over the cash."),
+         ("Opportunity", "That is impossible. Opportunity doesn’t come knocking twice!"),
+         ("Doris", "Dorisopen, so I thought I'd drop by!")]
 
 
 class ActionJokeSetup(Action):
@@ -28,11 +31,16 @@ class ActionJokeSetup(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        jix = random.choice(range(len(JOKES)))
+        if len(JOKES) == 0:
+            dispatcher.utter_message(text="Sorry, I have no joke now 😂")
 
-        dispatcher.utter_message(text=JOKES[jix][0])
+            return
+        else:
+            jix = random.choice(range(len(JOKES)))
 
-        return [SlotSet("jix", jix)]
+            dispatcher.utter_message(text=JOKES[jix][0])
+
+            return [SlotSet("jix", jix)]
 
 
 class ActionJokePunchline(Action):
@@ -44,8 +52,14 @@ class ActionJokePunchline(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        jix = int(tracker.get_slot("jix"))
-        joke = JOKES[jix]
-        dispatcher.utter_message(text=joke[1])
+        if len(JOKES) == 0:
+            dispatcher.utter_message(text="Sorry, I have no joke now 😂")
+        else:
+            jix = int(tracker.get_slot("jix"))
+            joke = JOKES[jix]
+            dispatcher.utter_message(text=joke[1])
+
+            JOKES.pop(jix)
+
 
         return []

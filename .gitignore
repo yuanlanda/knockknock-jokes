@@ -1,0 +1,7 @@
+
+#ignore folder
+/models
+/__pycache__
+
+#ignore other files
+.DS_Store

@@ -20,6 +20,12 @@ actions:
 - utter_knockknock
 - utter_deja
 - utter_doctor
+- utter_robin
+- utter_robin_you
+- utter_doris
+- utter_doris_open
+- utter_opportunity
+- utter_opportunity_im
 - utter_laugh
 - utter_greet
 - utter_cheer_up
@@ -43,6 +49,24 @@ responses:
 
   utter_laugh:
   - text: "🤪😂"
+
+  utter_robin:
+  - text: "Robin"
+
+  utter_robin_you:
+  - text: "Robin you, now hand over the cash."
+
+  utter_opportunity:
+  - text: "Opportunity"
+
+  utter_opportunity_im:
+  - text: "That is impossible. Opportunity doesn’t come knocking twice!"
+
+  utter_doris:
+  - text: "Doris"
+
+  utter_doris_open:
+  - text: "Dorisopen, so I thought I'd drop by!"
 
   utter_greet:
   - text: "Hey! How are you?"

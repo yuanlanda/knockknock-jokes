@@ -10,6 +10,9 @@
 - blabla who
 - deja who
 - doctor who
+- robin who
+- opportunity who
+- doris who
 
 ## intent:greet
 - hey
